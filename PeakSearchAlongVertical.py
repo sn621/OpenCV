@@ -64,15 +64,30 @@ for j_points in range(len(x)):
           list_peakinfo.append(x[j_points])
      else:
           continue
-print(list_peakinfo)
+print(len(list_peakinfo))
 
-for i_crop in range(int((len(list_peakinfo)-1)/2)):
-     if(i_crop==0):
-          #print(0,list_peakinfo[i_crop])
-          continue
+##############################
+# calculate mean points
+##############################
+list_crop_point = []
+# list_crop_point.append(0)
+for i_mean in range(int((len(list_peakinfo))/2)+1):
+     if(i_mean==0):
+          # print(int((list_peakinfo[2*i_mean]/2)))
+          list_crop_point.append(int((list_peakinfo[2*i_mean]/2)))
+     elif(i_mean==int((len(list_peakinfo))/2)):
+          # print(int((len(gray)+list_peakinfo[2*i_mean-1])/2))
+          list_crop_point.append(int((len(gray)+list_peakinfo[2*i_mean-1])/2))
      else:
-          print(list_peakinfo[2*i_crop],list_peakinfo[2*i_crop+1])
-          cv2.imwrite("fig_test_20180604_%02d.jpg" % i_crop,gray[list_peakinfo[2*i_crop]:list_peakinfo[2*i_crop+1]]) # for checking "gray" by image file output
+          # print(int((list_peakinfo[2*i_mean-1]+list_peakinfo[2*i_mean])/2))
+          list_crop_point.append(int((list_peakinfo[2*i_mean-1]+list_peakinfo[2*i_mean])/2))
+# list_crop_point.append(len(gray))
+
+print(len(list_crop_point))
+print(list_crop_point)
+for i_crop in range(len(list_crop_point)-1):
+     print(list_crop_point[i_crop],list_crop_point[i_crop+1])
+     cv2.imwrite("fig_test_20180612_%02d.jpg" % i_crop,gray[list_crop_point[i_crop]:list_crop_point[i_crop+1]]) # for checking "gray" by image file output
      
      
 
