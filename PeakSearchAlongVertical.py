@@ -18,7 +18,7 @@ from matplotlib import pyplot as plt
 ##############################
 # read image to opencv
 ##############################
-name_img = "./ARP-NWP1861_033_crop.jpg"
+name_img = "../Work20180604/ARP-NWP1861_033_crop.jpg"
 img = cv2.imread(name_img,0) # add 0 for gray scale
 
 ##############################
@@ -66,7 +66,7 @@ for j_points in range(len(x)):
           continue
 print(list_peakinfo)
 
-for i_crop in range(len(list_peakinfo)):
+for i_crop in range(int((len(list_peakinfo)-1)/2)):
      if(i_crop==0):
           #print(0,list_peakinfo[i_crop])
           continue
